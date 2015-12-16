@@ -15,6 +15,7 @@ describe('shop.shopProducts module', function() {
 
   var defer = {};
   var mockShopProductService = {};
+  var mockShoppingCartService = {};
   var mockScope = {};
   var shopProductsCtrl = {};
 
@@ -30,7 +31,7 @@ describe('shop.shopProducts module', function() {
 	  	}
 	}
 
-	shopProductsCtrl = $controller('ShopProductsCtrl', { $scope : mockScope, shopProductsService : mockShopProductService });  
+	shopProductsCtrl = $controller('ShopProductsCtrl', { $scope : mockScope, shopProductsService : mockShopProductService, shoppingCartService : mockShoppingCartService });  
   }));
 
   describe('ShopProductsCtrl controller', function(){

@@ -4,6 +4,8 @@
 angular.module('shop', [
   'ngRoute',  
   'shop.shopProducts',  
+  'shop.shoppingCart',
+  'shop.shoppingCartSummary',
   'shop.version'
 ]).
 config(['$routeProvider', function($routeProvider) {
