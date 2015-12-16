@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('shop').factory('uniqueIdService', ['$http', function($http) {
+angular.module('shop').factory('uniqueIdService', ['$http', 'configService', function($http, configService) {
 	
 	function getUniqueId() {
-		return $http.get('http://localhost:8080/atcm-shop-0.0.1-SNAPSHOT/uniqueId');
+		return $http.get(configService.servicesBaseUrl + '/uniqueId');
 	}
 
 	return {

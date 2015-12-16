@@ -15,8 +15,7 @@ angular.module('shop.shopProducts').controller('ShopProductsCtrl', ['$scope', 's
 		}
 
 		shopProductsService.getShopProducts().then(
-			function success(response) {				
-				console.log(response);				
+			function success(response) {								
 				$scope.products = response.data;				
 			},
 
