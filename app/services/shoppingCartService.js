@@ -8,9 +8,7 @@ angular.module('shop').factory('shoppingCartService', ['$rootScope', '$http', 'u
 	var addItemToCart = function(item) {
 
 		uniqueIdService.getUniqueId().then(
-			function success(uniqueIdResponse) {
-
-				console.log('Unique ID mock works!');
+			function success(uniqueIdResponse) {				
 
 				$http.post(configService.servicesBaseUrl + '/cart/write/f697bac1-e50f-4acc-9387-561a448fbca9', 
 						{ 
@@ -19,12 +17,12 @@ angular.module('shop').factory('shoppingCartService', ['$rootScope', '$http', 'u
 						  	updateDateTimeUTC : new Date().toISOString()
 						}
 					).then(
-					function success(response) {
+					function success(response) {						
 						cart.push(item);
 						$rootScope.$broadcast('itemsUpdated');
 					},
 
-					function failure(response) {
+					function failure(response) {						
 						throw 'Error adding item to cart - item POST.';
 					}
 				)
@@ -42,16 +40,11 @@ angular.module('shop').factory('shoppingCartService', ['$rootScope', '$http', 'u
 
 	var getCartItems = function() {
 		return cart;
-	}
-
-	var emptyCart = function() {
-		cart = [];
-	}
+	}	
 
 	return {
 		addItemToCart : addItemToCart,
 		getNumberOfCartItems : getNumberOfCartItems,
-		getCartItems : getCartItems,
-		emptyCart : emptyCart
+		getCartItems : getCartItems,		
 	};
 }]);
