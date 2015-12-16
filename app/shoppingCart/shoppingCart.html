@@ -12,12 +12,14 @@
 						<th>Description</th>
 						<th>Price</th>
 						<th>Quantity</th>
+						<th></th>
 					</thead>
 					<tr ng-repeat="item in displayItems track by $index">						
 						<td>{{item.name}}</td>
 						<td>{{item.description}}</td>
 						<td>{{item.cost}}</td>
 						<td>{{item.quantity}}</td>
+						<td><button type="button" ng-disabled="item.quantity === 0" class="btn btn-primary" ng-click="removeItemFromCart(item)">Remove</button></td>
 					</tr>
 				</table>
 			</div>

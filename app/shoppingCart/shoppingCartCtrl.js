@@ -24,5 +24,14 @@ angular.module('shop.shoppingCart').controller('ShoppingCartCtrl', ['$scope', 's
 					displayItem.quantity++;
 				}
 			});
-		});		
+		});
+
+		$scope.removeItemFromCart = function(item) {
+			var matchingCartItems = _.where(shoppingCartItems, { id : item.id, name : item.name });
+			var matchingDisplayItems = _.where($scope.displayItems, { id : item.id, name : item.name });
+			if(matchingCartItems.length > 0) {
+				shoppingCartService.removeItemFromCart(matchingCartItems[0]);
+				matchingDisplayItems[0].quantity--;
+			}	
+		}	
 }]);
