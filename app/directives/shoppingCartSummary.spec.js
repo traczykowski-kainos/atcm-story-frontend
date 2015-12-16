@@ -1,10 +1,7 @@
 'use strict';
 
 describe('The shoppingCartSummary directive', function() {
-
-	var mockId = 12345;
-	var uniqueIdService = {};
-	var httpBackend = {};
+	
 	var numberOfShoppingCartItems = 1;
 	var mockShoppingCartService = {		
 		getNumberOfCartItems : function() {

@@ -1,7 +1,7 @@
 <div class="container">
 	
 	<div ng-if="displayItems.length > 0">
-		<p>Please see below the list of items currently in your shopping cart, click 'Checkout' to proceed, or you can
+		<p>Please see below the list of items currently in your shopping cart, you can
 			<a href="#/shopProducts">keep shopping</a></p>
 
 		<div class="row">
@@ -22,12 +22,7 @@
 				</table>
 			</div>
 			<div class="col-md-3"></div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-9"><a class="btn btn-info btn-sm float-right">Checkout</a></div>
-			<div class="col-md-3"></div>
-		</div>
+		</div>		
 	</div>
 	<div ng-if="displayItems.length == 0">
 		<p>You do not currently have any items in your shopping cart, visit our <a href="#/shopProducts">shop</a> to add items to you cart.</p>

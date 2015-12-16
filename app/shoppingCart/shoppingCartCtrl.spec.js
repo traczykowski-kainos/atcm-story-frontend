@@ -2,6 +2,7 @@
 
 describe('shop.shoppingCart module', function() {
 
+	// Mock items
 	var mockBronzeBangle = {
 	  	id : 1,
 	  	name : 'Bronze Bangle'
@@ -19,8 +20,8 @@ describe('shop.shoppingCart module', function() {
 	mockShoppingCartItems.push(mockBronzeBangle);
 	mockShoppingCartItems.push(mockTitanBangle);
 	mockShoppingCartItems.push(mockTitanBangle);
-
-  var expectedDisplayItems = [
+  
+    var expectedDisplayItems = [
   	  {
 	  	id : 1,
 	  	name : 'Bronze Bangle',
@@ -31,29 +32,29 @@ describe('shop.shoppingCart module', function() {
 	  	name : 'Titan Bangle',
 	  	quantity : 2
 	  }
-  ];
+    ];
 
-  var mockScope = {};
-  var shoppingCartCtrl = {};
-  var mockShoppingCartService = {};
+    var mockScope = {};
+    var shoppingCartCtrl = {};
+    var mockShoppingCartService = {};
 
-  beforeEach(module('shop.shoppingCart'));
+    beforeEach(module('shop.shoppingCart'));
 
-  beforeEach(inject(function($q, $rootScope, $controller) {  	
-  	mockScope = $rootScope.$new();
+    beforeEach(inject(function($q, $rootScope, $controller) {  	
+  	  mockScope = $rootScope.$new();
 
-    mockShoppingCartService = {
-      getCartItems : function() { return mockShoppingCartItems; }
-    }
+      mockShoppingCartService = {
+        getCartItems : function() { return mockShoppingCartItems; }
+      }
 
 	  shoppingCartCtrl = $controller('ShoppingCartCtrl', { $scope : mockScope, shoppingCartService : mockShoppingCartService });  
-  }));
+    }));
 
-  describe('ShoppingCartCtrl controller', function(){
+    describe('ShoppingCartCtrl controller', function(){
 
-    it('should be defined and should set display items and quantities correctly', inject(function() {
-      expect(shoppingCartCtrl).toBeDefined();
-      expect(mockScope.displayItems).toEqual(expectedDisplayItems);
+    it('should be defined and should set display items and quantities correctly', inject(function() {    	
+        expect(shoppingCartCtrl).toBeDefined();
+        expect(mockScope.displayItems).toEqual(expectedDisplayItems);
     }));
 
   });

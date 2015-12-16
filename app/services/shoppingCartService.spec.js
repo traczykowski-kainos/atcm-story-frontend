@@ -1,8 +1,7 @@
 'use strict';
 
 describe('The shoppingCartService', function() {
-
-	var mockId = 12345;
+	
 	var shoppingCartService = {};
 	var httpBackend = {};
 	var mockconfigService = {		

@@ -1,21 +1,20 @@
 'use strict';
 
 describe('The shopProductService', function() {
-
-	var mockId = 12345;
+	
 	var shopProductsService = {};
 	var httpBackend = {};
-	var mockconfigService = {		
+	var mockConfigService = {		
 		servicesBaseUrl : 'http://localhost:8080'		
 	}
 
 	beforeEach(module('shop'));
 
 	beforeEach(module(function ($provide) {
-        $provide.value('configService', mockconfigService);
+        $provide.value('configService', mockConfigService);
     }));
 
-	beforeEach(inject(function(_uniqueIdService_, $httpBackend, $injector) {  	
+	beforeEach(inject(function($httpBackend, $injector) {  	
 		shopProductsService = $injector.get('shopProductsService');
 		httpBackend = $httpBackend;
 	}));
