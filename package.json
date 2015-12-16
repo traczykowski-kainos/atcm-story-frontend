@@ -1,9 +1,8 @@
 {
-  "name": "angular-seed",
+  "name": "clothes-shop",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "A simple clothes shop application in AngularJS",  
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.3.1",
