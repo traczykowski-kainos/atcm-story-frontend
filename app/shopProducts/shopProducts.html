@@ -8,16 +8,14 @@
 						<thead>							
 							<th>Name</th>
 							<th>Description</th>
-							<th>Cost</th>
-							<th>Category</th>
+							<th>Cost</th>							
 							<th>Image</th>	
 							<th></th>				
 						</thead>
 						<tr ng-repeat="product in products">
 							<td>{{product.name}}</td>
 							<td>{{product.description}}</td>
-							<td>{{product.cost}}</td>
-							<td>{{product.category}}</td>
+							<td>{{product.cost}}</td>							
 							<td><img ng-src="../app/assets/products/{{product.id}}.png" class="product-image"></img></td>	
 							<td><button type="button" class="btn btn-primary" ng-click="addProductToCart(product)">Add to cart</button></td>			
 						</tr>
