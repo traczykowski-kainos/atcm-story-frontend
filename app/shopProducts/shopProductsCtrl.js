@@ -11,11 +11,16 @@ angular.module('shop.shopProducts').controller('ShopProductsCtrl', ['$scope', 's
 		}
 
 		$scope.addProductToCart = function(product) {
-			shoppingCartService.addItemToCart(product);
+			try {
+				shoppingCartService.addItemToCart(product);
+			} catch (error) {
+				$scope.error.errorState = true;
+				$scope.error.errorMessage = 'There was an error adding the item to your cart, please try again later.';				
+			}
 		}
 
 		shopProductsService.getShopProducts().then(
-			function success(response) {								
+			function success(response) {										
 				$scope.products = response.data;				
 			},
 

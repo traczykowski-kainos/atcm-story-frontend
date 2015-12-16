@@ -6,10 +6,10 @@ angular.module('shop.shoppingCart').controller('ShoppingCartCtrl', ['$scope', 's
 		$scope.displayItems = [];
 
 		// Get items
-		var shoppingCartItems = shoppingCartService.getCartItems();
+		var shoppingCartItems = shoppingCartService.getCartItems();		
 
 		// Get unique items
-		var deduplicatedItems = _.uniq(shoppingCartItems);
+		var deduplicatedItems = _.uniq(shoppingCartItems);		
 
 		// Populate display items with unique items
 		_.each(deduplicatedItems, function(item) {
@@ -24,5 +24,5 @@ angular.module('shop.shoppingCart').controller('ShoppingCartCtrl', ['$scope', 's
 					displayItem.quantity++;
 				}
 			});
-		});
+		});		
 }]);

@@ -3,13 +3,14 @@
 angular.module('shop').factory('shoppingCartService', ['$rootScope', '$http', 'uniqueIdService', 'configService',
 	function($rootScope, $http, uniqueIdService, configService) {
 	
-	var cart = [];
-	// var servicesBaseAddress = configService.servicesBaseUrl;
+	var cart = [];	
 
 	var addItemToCart = function(item) {
 
 		uniqueIdService.getUniqueId().then(
 			function success(uniqueIdResponse) {
+
+				console.log('Unique ID mock works!');
 
 				$http.post(configService.servicesBaseUrl + '/cart/write/f697bac1-e50f-4acc-9387-561a448fbca9', 
 						{ 
@@ -17,7 +18,7 @@ angular.module('shop').factory('shoppingCartService', ['$rootScope', '$http', 'u
 						  	correlationId : uniqueIdResponse.data,
 						  	updateDateTimeUTC : new Date().toISOString()
 						}
-					).then (
+					).then(
 					function success(response) {
 						cart.push(item);
 						$rootScope.$broadcast('itemsUpdated');
