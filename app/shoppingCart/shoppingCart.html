@@ -14,7 +14,7 @@
 					<th>Price</th>
 					<th>Quantity</th>
 				</thead>
-				<tr ng-repeat="item in displayItems track by $index">						
+				<tr id="shopping-cart-item" ng-repeat="item in displayItems track by $index">						
 					<td>
 						<blockquote>
 						  <p>{{item.name}}</p>
@@ -22,7 +22,7 @@
 						</blockquote>
 					</td>
 					<td class="text-center">{{item.cost}}</td>
-					<td class="text-center">{{item.quantity}}</td>
+					<td id="quantity" class="text-center">{{item.quantity}}</td>
 				</tr>
 			</table>
         </div>
