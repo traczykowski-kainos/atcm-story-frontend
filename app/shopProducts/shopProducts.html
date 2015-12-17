@@ -1,32 +1,37 @@
 <div class="container">
-
-	<div ng-if="error.errorState == false">
-		<p>Please see below our current selection of clothing products</p>
-			<div class="row">
-				<div class="col-md-9">
-					<table class="table table-bordered">
-						<thead>							
-							<th>Name</th>
-							<th>Description</th>
-							<th>Cost</th>							
-							<th>Image</th>	
-							<th></th>				
-						</thead>
-						<tr ng-repeat="product in products">
-							<td>{{product.name}}</td>
-							<td>{{product.description}}</td>
-							<td>{{product.cost}}</td>							
-							<td><img ng-src="../app/assets/products/{{product.id}}.png" class="product-image"></img></td>	
-							<td><button type="button" class="btn btn-primary" ng-click="addProductToCart(product)">Add to cart</button></td>			
-						</tr>
-					</table>
-				</div>
-				<div class="col-md-3"></div>
-			</div>
-	</div>
-
-	<div ng-if="error.errorState === true" class="alert alert-danger">
-	  <strong>Error:</strong> {{error.errorMessage}}
-	</div>
-	
+    <div ng-if="error.errorState == false">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Legendary Gear</div>
+            <div class="panel-body">
+                <p>Choose from our premium legendary gear items, stay ahead of the pack with the best loot available.</p>
+            </div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+					<th>Image</th>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    <th></th>
+                </thead>
+                <tr ng-repeat="product in products">
+					<td><img ng-src="../app/assets/products/{{product.id}}.png"></img></td>
+					<td>
+						<blockquote>
+						  <p>{{product.name}}</p>
+						  <footer>{{product.description}}</footer>
+						</blockquote>
+					</td>                    
+                    <td>{{product.cost}}</td>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="addProductToCart(product)"><span class="glyphicon glyphicon-shopping-cart">Add</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div ng-if="error.errorState === true" class="alert alert-danger">
+        <strong>Error:</strong> {{error.errorMessage}}
+    </div>
 </div>

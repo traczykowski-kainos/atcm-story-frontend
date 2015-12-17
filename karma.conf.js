@@ -20,7 +20,9 @@ module.exports = function(config){
       'app/services/shopProductsService.js',
       'app/services/shopProductsService.spec.js',
       'app/services/shoppingCartService.js',
-      'app/services/shoppingCartService.spec.js'
+      'app/services/shoppingCartService.spec.js',
+      'app/directives/shoppingCartSummary.js',
+      'app/directives/shoppingCartSummary.spec.js'
     ],
 
     autoWatch : true,
