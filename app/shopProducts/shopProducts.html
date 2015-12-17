@@ -9,12 +9,13 @@
             <!-- Table -->
             <table class="table">
                 <thead>
+					<th>Image</th>
                     <th>Item</th>
                     <th>Cost</th>
-                    <th>Image</th>
                     <th></th>
                 </thead>
                 <tr ng-repeat="product in products">
+					<td><img ng-src="../app/assets/products/{{product.id}}.png"></img></td>
 					<td>
 						<blockquote>
 						  <p>{{product.name}}</p>
@@ -22,7 +23,6 @@
 						</blockquote>
 					</td>                    
                     <td>{{product.cost}}</td>
-                    <td><img ng-src="../app/assets/products/{{product.id}}.png" class="product-image"></img>
                     </td>
                     <td>
                         <button type="button" class="btn btn-primary" ng-click="addProductToCart(product)"><span class="glyphicon glyphicon-shopping-cart">Add</button>
