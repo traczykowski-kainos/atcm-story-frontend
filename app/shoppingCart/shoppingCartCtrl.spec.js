@@ -18,8 +18,7 @@ describe('shop.shoppingCart module', function() {
 	mockShoppingCartItems.push(mockBronzeBangle);
 	mockShoppingCartItems.push(mockBronzeBangle);
 	mockShoppingCartItems.push(mockBronzeBangle);
-	mockShoppingCartItems.push(mockTitanBangle);
-	mockShoppingCartItems.push(mockTitanBangle);
+	mockShoppingCartItems.push(mockTitanBangle);	
   
     var expectedDisplayItems = [
   	  {
@@ -30,7 +29,7 @@ describe('shop.shoppingCart module', function() {
 	  {
 	  	id : 2,
 	  	name : 'Titan Bangle',
-	  	quantity : 2
+	  	quantity : 1
 	  }
     ];
 
@@ -40,22 +39,43 @@ describe('shop.shoppingCart module', function() {
 
     beforeEach(module('shop.shoppingCart'));
 
-    beforeEach(inject(function($q, $rootScope, $controller) {  	
+    beforeEach(inject(function($rootScope, $controller) {  	
   	  mockScope = $rootScope.$new();
 
       mockShoppingCartService = {
-        getCartItems : function() { return mockShoppingCartItems; }
+        getCartItems : function() { return mockShoppingCartItems; },
+        removeItemFromCart : function(item) { }
       }
+
+      spyOn(mockShoppingCartService, 'removeItemFromCart');
 
 	  shoppingCartCtrl = $controller('ShoppingCartCtrl', { $scope : mockScope, shoppingCartService : mockShoppingCartService });  
     }));
 
     describe('ShoppingCartCtrl controller', function(){
 
-    it('should be defined and should set display items and quantities correctly', inject(function() {    	
-        expect(shoppingCartCtrl).toBeDefined();
-        expect(mockScope.displayItems).toEqual(expectedDisplayItems);
-    }));
+	    it('should be defined and should set display items and quantities correctly', inject(function() {    	
+	        expect(shoppingCartCtrl).toBeDefined();
+	        expect(mockScope.displayItems).toEqual(expectedDisplayItems);
+	    }));
 
+		it('should call removeItemFromCart on shoppingCartService when item has quantity', inject(function() {    	
+	        expect(shoppingCartCtrl).toBeDefined();
+	        expect(mockScope.displayItems).toEqual(expectedDisplayItems);
+
+	        mockScope.removeItemFromCart(expectedDisplayItems[0]);
+	        expect(mockShoppingCartService.removeItemFromCart).toHaveBeenCalledWith(mockBronzeBangle);
+	    }));	    
+
+		it('should only allow one calls to service to remove mockItem2 - Titan Bangle', inject(function() {    	
+	        expect(shoppingCartCtrl).toBeDefined();
+	        expect(mockScope.displayItems).toEqual(expectedDisplayItems);
+
+	        mockScope.removeItemFromCart(expectedDisplayItems[1]);
+	        expect(mockShoppingCartService.removeItemFromCart).toHaveBeenCalledWith(mockTitanBangle);
+
+	        mockScope.removeItemFromCart(expectedDisplayItems[1]);
+			expect(mockShoppingCartService.removeItemFromCart).not.toHaveBeenCalledWith();
+	    }));	    
   });
 });

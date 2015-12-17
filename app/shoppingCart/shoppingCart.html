@@ -13,6 +13,7 @@
 					<th>Item</th>
 					<th>Price</th>
 					<th>Quantity</th>
+					<th></th>
 				</thead>
 				<tr id="shopping-cart-item" ng-repeat="item in displayItems track by $index">						
 					<td>
@@ -22,6 +23,8 @@
 						</blockquote>
 					</td>
 					<td class="text-center">{{item.cost}}</td>
+					<td class="text-center">{{item.quantity}}</td>
+					<td><button type="button" ng-disabled="item.quantity === 0" class="btn btn-primary" ng-click="removeItemFromCart(item)">Remove</button></td>
 					<td id="quantity" class="text-center">{{item.quantity}}</td>
 				</tr>
 			</table>

@@ -34,6 +34,41 @@ angular.module('shop').factory('shoppingCartService', ['$rootScope', '$http', 'u
 		)		
 	}
 
+	var removeItemFromCart = function(item) {
+
+		uniqueIdService.getUniqueId().then(
+			function success(uniqueIdResponse) {							
+
+				$http({
+					  url : configService.servicesBaseUrl + '/cart/write/f697bac1-e50f-4acc-9387-561a448fbca9', 
+					  method : 'DELETE',
+					  data : { 
+							productId : item.id,
+						  	correlationId : uniqueIdResponse.data,
+						  	updateDateTimeUTC : new Date().toISOString()
+					    },
+					   headers: {'Content-Type' : 'application/json' }
+					}).then(
+					function success(response) {												
+						var index = cart.indexOf(item);
+						if(index > - 1) {
+							cart.splice(index, 1);
+						}
+						$rootScope.$broadcast('itemsUpdated');
+					},
+
+					function failure(response) {						
+						throw 'Error removing item from cart - item DELETE.';
+					}
+				)
+			},
+
+			function fail(response) {
+				throw 'Error removing item from cart - generate correlation Id.';
+			}
+		)		
+	}
+
 	var getNumberOfCartItems = function() {
 		return cart.length;
 	}
@@ -45,6 +80,7 @@ angular.module('shop').factory('shoppingCartService', ['$rootScope', '$http', 'u
 	return {
 		addItemToCart : addItemToCart,
 		getNumberOfCartItems : getNumberOfCartItems,
-		getCartItems : getCartItems,		
+		getCartItems : getCartItems,	
+		removeItemFromCart : removeItemFromCart	
 	};
 }]);
