@@ -1,30 +1,36 @@
 <div class="container">
 	
 	<div ng-if="displayItems.length > 0">
-		<p>Please see below the list of items currently in your shopping cart, you can
-			<a href="#/shopProducts">keep shopping</a></p>
-
-		<div class="row">
-			<div class="col-md-9">
-				<table class="table table-bordered">
-					<thead>						
-						<th>Name</th>
-						<th>Description</th>
-						<th>Price</th>
-						<th>Quantity</th>
-					</thead>
-					<tr ng-repeat="item in displayItems track by $index">						
-						<td>{{item.name}}</td>
-						<td>{{item.description}}</td>
-						<td>{{item.cost}}</td>
-						<td>{{item.quantity}}</td>
-					</tr>
-				</table>
-			</div>
-			<div class="col-md-3"></div>
-		</div>		
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Legendary Gear</div>
+            <div class="panel-body">
+                <p>Please see below the list of items currently in your shopping cart, you can <a href="#/shopProducts">keep shopping</a></p>
+            </div>
+            <!-- Table -->
+			<table class="table">
+				<thead>						
+					<th>Item</th>
+					<th>Price</th>
+					<th>Quantity</th>
+				</thead>
+				<tr ng-repeat="item in displayItems track by $index">						
+					<td>
+						<blockquote>
+						  <p>{{item.name}}</p>
+						  <footer>{{item.description}}</footer>
+						</blockquote>
+					</td>
+					<td class="text-center">{{item.cost}}</td>
+					<td class="text-center">{{item.quantity}}</td>
+				</tr>
+			</table>
+        </div>
 	</div>
 	<div ng-if="displayItems.length == 0">
-		<p>You do not currently have any items in your shopping cart, visit our <a href="#/shopProducts">shop</a> to add items to you cart.</p>
+		<div class="jumbotron">
+		  <h1>Your chest is empty adventurer!</h1>
+		  <p>Visit our <a href="#/shopProducts">product listings</a> to add items to you cart.</p>
+		</div>	
 	</div>
 </div>
