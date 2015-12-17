@@ -37,7 +37,7 @@ angular.module('shop').factory('shoppingCartService', ['$rootScope', '$http', 'u
 	var removeItemFromCart = function(item) {
 
 		uniqueIdService.getUniqueId().then(
-			function success(uniqueIdResponse) {				
+			function success(uniqueIdResponse) {							
 
 				$http({
 					  url : configService.servicesBaseUrl + '/cart/write/f697bac1-e50f-4acc-9387-561a448fbca9', 
@@ -49,7 +49,7 @@ angular.module('shop').factory('shoppingCartService', ['$rootScope', '$http', 'u
 					    },
 					   headers: {'Content-Type' : 'application/json' }
 					}).then(
-					function success(response) {						
+					function success(response) {												
 						var index = cart.indexOf(item);
 						if(index > - 1) {
 							cart.splice(index, 1);
