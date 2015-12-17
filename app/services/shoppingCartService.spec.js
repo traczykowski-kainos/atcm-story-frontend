@@ -108,7 +108,7 @@ describe('The shoppingCartService', function() {
 
         httpBackend.flush();
 
-        expect(shoppingCartService.getNumberOfCartItems()).toEqual(0);
+        expect(shoppingCartService.getNumberOfCartItems()).toEqual(1);
         expect(rootScope.$broadcast).toHaveBeenCalledWith('itemsUpdated');
         httpBackend.verifyNoOutstandingExpectation();
      	httpBackend.verifyNoOutstandingRequest();
