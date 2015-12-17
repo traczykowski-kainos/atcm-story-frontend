@@ -29,7 +29,7 @@ describe('The shoppingCartSummary directive', function() {
     	$rootScope.$digest();
 
     	// Assert directive has correct number of items shown (same as returned from shoppingCartService)
-    	expect(element.html()).toContain('Cart (1)');
+    	expect(element.html()).toContain('Items: <span class="badge ng-binding">1</span>');
 	});
 
 	it('should increment the cart display when the number of items in the cart is increased and the "items updated" event is broadcast', function() {
@@ -38,13 +38,13 @@ describe('The shoppingCartSummary directive', function() {
 
     	// Kick off digest cycle and assert cart has 1 item.
     	$rootScope.$digest();
-    	expect(element.html()).toContain('Cart (1)');
+    	expect(element.html()).toContain('Items: <span class="badge ng-binding">1</span>');
 
     	// Increment number of items in cart, broadcast event and assert that cart display has been updated
     	numberOfShoppingCartItems++;
     	$rootScope.$broadcast('itemsUpdated');
     	$rootScope.$digest();
 
-    	expect(element.html()).toContain('Cart (2)');
+    	expect(element.html()).toContain('Items: <span class="badge ng-binding">2</span>');
 	});
 });
